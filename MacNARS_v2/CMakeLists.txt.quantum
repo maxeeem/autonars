@@ -1,19 +1,11 @@
 cmake_minimum_required(VERSION 3.15)
-project(MacNARS_v2)
+project(MacNARS_Quantum)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 enable_language(OBJCXX)
 
 find_library(METAL_FRAMEWORK Metal)
 find_library(FOUNDATION_FRAMEWORK Foundation)
 
-include_directories(include)
-
-# Standard logic core
-add_executable(MacNARS_v2 src/main.cpp)
-
-# Quantum-inspired core
 add_executable(MacNARS_Quantum src/QuantumMain.mm)
 target_link_libraries(MacNARS_Quantum ${METAL_FRAMEWORK} ${FOUNDATION_FRAMEWORK})

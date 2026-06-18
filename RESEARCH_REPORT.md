@@ -12,7 +12,14 @@ By mapping Narsese Terms to a high-dimensional vector space (using a pre-trained
 - **Symbolic + Neural:** The Bag-based selection is no longer just probabilistic; it is **Geodesic**. Concepts that are "close" in the neural embedding space exert a "Semantic Gravity" on each other.
 - **Outcome:** If the system is thinking about "Bird", concepts like "Wing" and "Flight" receive a priority boost not just through symbolic links, but through their proximity on the manifold. This enables a form of "Intuitive Leaping" that NARS has historically struggled with.
 
-## 3. Implementation Path
-- **Current Step:** I have implemented the `Superposition.metal` shader to test the "Inference Interference" logic.
-- **Next Step:** Integrating the Apple AMX (Apple Matrix Extension) to compute Geodesic Priority Boosts for Concept selection.
-- **Goal:** A system that matches OpenNARS Java on logic, but exceeds ONA on real-time adaptive intuition.
+## 3. Hyper-Causal Sensorimotor Feedback: The Continuous Logic Reflex
+Standard NARS treats operations as discrete "pulses." In a physical world, this leads to jerky, high-latency control. 
+
+**The Hyper-Causal Model** introduces a dual-process control loop:
+- **The Reflex (GPU):** A high-frequency (1kHz+) PID-like controller implemented in Metal shaders. It handles the continuous adjustment of motor outputs to meet a "Setpoint."
+- **The Reasoner (CPU):** The symbolic NARS logic monitors the "Surprise" metric (Causal Violation) from the Reflex. 
+- **The Coupling:** 
+    1. Symbolic Logic sets the `target_value` (The Goal).
+    2. The Reflex executes the continuous movement.
+    3. If the movement fails (Surprise!), NARS receives an immediate priority boost to re-reason about the environment (e.g., "Is the arm stuck?").
+- **Innovation:** This matches the biological distinction between the **Spinal Reflex** (sub-millisecond) and **Cortical Reasoning** (hundreds of milliseconds). MacNARS v2 becomes the first NARS implementation to have a "nervous system" capable of reflexive balance and symbolic planning simultaneously.

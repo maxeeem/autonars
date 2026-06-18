@@ -129,6 +129,27 @@ MacNARS_v2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_v2.dir/build.make CMakeFiles/MacNARS_v2.dir/build
 .PHONY : MacNARS_v2/fast
 
+#=============================================================================
+# Target rules for targets named MacNARS_Quantum
+
+# Build rule for target.
+MacNARS_Quantum: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MacNARS_Quantum
+.PHONY : MacNARS_Quantum
+
+# fast build rule for target.
+MacNARS_Quantum/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_Quantum.dir/build.make CMakeFiles/MacNARS_Quantum.dir/build
+.PHONY : MacNARS_Quantum/fast
+
+src/QuantumMain.o: src/QuantumMain.mm.o
+.PHONY : src/QuantumMain.o
+
+# target to build an object file
+src/QuantumMain.mm.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_Quantum.dir/build.make CMakeFiles/MacNARS_Quantum.dir/src/QuantumMain.mm.o
+.PHONY : src/QuantumMain.mm.o
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -161,7 +182,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... MacNARS_Quantum"
 	@echo "... MacNARS_v2"
+	@echo "... src/QuantumMain.o"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

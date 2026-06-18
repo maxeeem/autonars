@@ -1,3 +1,4 @@
 /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles/MacNARS_v2.dir
+/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles/MacNARS_Quantum.dir
 /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles/edit_cache.dir
 /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles/rebuild_cache.dir
