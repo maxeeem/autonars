@@ -168,6 +168,19 @@ MacNARS_AppleEmbeddings/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_AppleEmbeddings.dir/build.make CMakeFiles/MacNARS_AppleEmbeddings.dir/build
 .PHONY : MacNARS_AppleEmbeddings/fast
 
+#=============================================================================
+# Target rules for targets named MacNARS_DroneBaseline
+
+# Build rule for target.
+MacNARS_DroneBaseline: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MacNARS_DroneBaseline
+.PHONY : MacNARS_DroneBaseline
+
+# fast build rule for target.
+MacNARS_DroneBaseline/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_DroneBaseline.dir/build.make CMakeFiles/MacNARS_DroneBaseline.dir/build
+.PHONY : MacNARS_DroneBaseline/fast
+
 src/AppleEmbeddingsMain.o: src/AppleEmbeddingsMain.mm.o
 .PHONY : src/AppleEmbeddingsMain.o
 
@@ -175,6 +188,30 @@ src/AppleEmbeddingsMain.o: src/AppleEmbeddingsMain.mm.o
 src/AppleEmbeddingsMain.mm.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_AppleEmbeddings.dir/build.make CMakeFiles/MacNARS_AppleEmbeddings.dir/src/AppleEmbeddingsMain.mm.o
 .PHONY : src/AppleEmbeddingsMain.mm.o
+
+src/DroneBaseline.o: src/DroneBaseline.cpp.o
+.PHONY : src/DroneBaseline.o
+
+# target to build an object file
+src/DroneBaseline.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_DroneBaseline.dir/build.make CMakeFiles/MacNARS_DroneBaseline.dir/src/DroneBaseline.cpp.o
+.PHONY : src/DroneBaseline.cpp.o
+
+src/DroneBaseline.i: src/DroneBaseline.cpp.i
+.PHONY : src/DroneBaseline.i
+
+# target to preprocess a source file
+src/DroneBaseline.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_DroneBaseline.dir/build.make CMakeFiles/MacNARS_DroneBaseline.dir/src/DroneBaseline.cpp.i
+.PHONY : src/DroneBaseline.cpp.i
+
+src/DroneBaseline.s: src/DroneBaseline.cpp.s
+.PHONY : src/DroneBaseline.s
+
+# target to generate assembly for a file
+src/DroneBaseline.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_DroneBaseline.dir/build.make CMakeFiles/MacNARS_DroneBaseline.dir/src/DroneBaseline.cpp.s
+.PHONY : src/DroneBaseline.cpp.s
 
 src/HyperCausalMain.o: src/HyperCausalMain.mm.o
 .PHONY : src/HyperCausalMain.o
@@ -225,10 +262,14 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... MacNARS_AppleEmbeddings"
+	@echo "... MacNARS_DroneBaseline"
 	@echo "... MacNARS_HyperCausal"
 	@echo "... MacNARS_Quantum"
 	@echo "... MacNARS_v2"
 	@echo "... src/AppleEmbeddingsMain.o"
+	@echo "... src/DroneBaseline.o"
+	@echo "... src/DroneBaseline.i"
+	@echo "... src/DroneBaseline.s"
 	@echo "... src/HyperCausalMain.o"
 	@echo "... src/QuantumMain.o"
 	@echo "... src/main.o"

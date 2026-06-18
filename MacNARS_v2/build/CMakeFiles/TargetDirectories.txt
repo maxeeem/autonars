@@ -2,5 +2,6 @@
 /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles/MacNARS_Quantum.dir
 /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles/MacNARS_HyperCausal.dir
 /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles/MacNARS_AppleEmbeddings.dir
+/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles/MacNARS_DroneBaseline.dir
 /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles/edit_cache.dir
 /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles/rebuild_cache.dir

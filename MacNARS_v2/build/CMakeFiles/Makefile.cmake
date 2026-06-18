@@ -57,4 +57,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/MacNARS_Quantum.dir/DependInfo.cmake"
   "CMakeFiles/MacNARS_HyperCausal.dir/DependInfo.cmake"
   "CMakeFiles/MacNARS_AppleEmbeddings.dir/DependInfo.cmake"
+  "CMakeFiles/MacNARS_DroneBaseline.dir/DependInfo.cmake"
   )

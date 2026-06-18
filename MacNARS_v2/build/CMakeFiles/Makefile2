@@ -67,6 +67,7 @@ all: CMakeFiles/MacNARS_v2.dir/all
 all: CMakeFiles/MacNARS_Quantum.dir/all
 all: CMakeFiles/MacNARS_HyperCausal.dir/all
 all: CMakeFiles/MacNARS_AppleEmbeddings.dir/all
+all: CMakeFiles/MacNARS_DroneBaseline.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -78,6 +79,7 @@ clean: CMakeFiles/MacNARS_v2.dir/clean
 clean: CMakeFiles/MacNARS_Quantum.dir/clean
 clean: CMakeFiles/MacNARS_HyperCausal.dir/clean
 clean: CMakeFiles/MacNARS_AppleEmbeddings.dir/clean
+clean: CMakeFiles/MacNARS_DroneBaseline.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -87,7 +89,7 @@ clean: CMakeFiles/MacNARS_AppleEmbeddings.dir/clean
 CMakeFiles/MacNARS_v2.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_v2.dir/build.make CMakeFiles/MacNARS_v2.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_v2.dir/build.make CMakeFiles/MacNARS_v2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=7,8 "Built target MacNARS_v2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=9,10 "Built target MacNARS_v2"
 .PHONY : CMakeFiles/MacNARS_v2.dir/all
 
 # Build rule for subdir invocation for target.
@@ -113,7 +115,7 @@ CMakeFiles/MacNARS_v2.dir/clean:
 CMakeFiles/MacNARS_Quantum.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_Quantum.dir/build.make CMakeFiles/MacNARS_Quantum.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_Quantum.dir/build.make CMakeFiles/MacNARS_Quantum.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=5,6 "Built target MacNARS_Quantum"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=7,8 "Built target MacNARS_Quantum"
 .PHONY : CMakeFiles/MacNARS_Quantum.dir/all
 
 # Build rule for subdir invocation for target.
@@ -139,7 +141,7 @@ CMakeFiles/MacNARS_Quantum.dir/clean:
 CMakeFiles/MacNARS_HyperCausal.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_HyperCausal.dir/build.make CMakeFiles/MacNARS_HyperCausal.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_HyperCausal.dir/build.make CMakeFiles/MacNARS_HyperCausal.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=3,4 "Built target MacNARS_HyperCausal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=5,6 "Built target MacNARS_HyperCausal"
 .PHONY : CMakeFiles/MacNARS_HyperCausal.dir/all
 
 # Build rule for subdir invocation for target.
@@ -183,6 +185,32 @@ MacNARS_AppleEmbeddings: CMakeFiles/MacNARS_AppleEmbeddings.dir/rule
 CMakeFiles/MacNARS_AppleEmbeddings.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_AppleEmbeddings.dir/build.make CMakeFiles/MacNARS_AppleEmbeddings.dir/clean
 .PHONY : CMakeFiles/MacNARS_AppleEmbeddings.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/MacNARS_DroneBaseline.dir
+
+# All Build rule for target.
+CMakeFiles/MacNARS_DroneBaseline.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_DroneBaseline.dir/build.make CMakeFiles/MacNARS_DroneBaseline.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_DroneBaseline.dir/build.make CMakeFiles/MacNARS_DroneBaseline.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=3,4 "Built target MacNARS_DroneBaseline"
+.PHONY : CMakeFiles/MacNARS_DroneBaseline.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/MacNARS_DroneBaseline.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MacNARS_DroneBaseline.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles 0
+.PHONY : CMakeFiles/MacNARS_DroneBaseline.dir/rule
+
+# Convenience name for target.
+MacNARS_DroneBaseline: CMakeFiles/MacNARS_DroneBaseline.dir/rule
+.PHONY : MacNARS_DroneBaseline
+
+# clean rule for target.
+CMakeFiles/MacNARS_DroneBaseline.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_DroneBaseline.dir/build.make CMakeFiles/MacNARS_DroneBaseline.dir/clean
+.PHONY : CMakeFiles/MacNARS_DroneBaseline.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

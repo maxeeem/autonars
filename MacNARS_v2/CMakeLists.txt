@@ -28,4 +28,8 @@ target_link_libraries(MacNARS_HyperCausal ${METAL_FRAMEWORK} ${FOUNDATION_FRAMEW
 add_executable(MacNARS_AppleEmbeddings src/AppleEmbeddingsMain.mm)
 target_link_libraries(MacNARS_AppleEmbeddings ${FOUNDATION_FRAMEWORK} ${NATURALLANGUAGE_FRAMEWORK})
 
+# Empirical Baseline Comparison
+add_executable(MacNARS_DroneBaseline src/DroneBaseline.cpp)
+
+
 
