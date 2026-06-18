@@ -247,6 +247,9 @@ MacNARS_v2_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 MacNARS_v2_SOURCE_DIR:STATIC=/Users/maxeeem/autonars/MacNARS_v2
 
+//Path to a library.
+NATURALLANGUAGE_FRAMEWORK:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk/System/Library/Frameworks/NaturalLanguage.framework
+
 
 ########################
 # INTERNAL cache entries

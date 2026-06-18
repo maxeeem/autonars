@@ -65,6 +65,8 @@ CMAKE_BINARY_DIR = /Users/maxeeem/autonars/MacNARS_v2/build
 # The main recursive "all" target.
 all: CMakeFiles/MacNARS_v2.dir/all
 all: CMakeFiles/MacNARS_Quantum.dir/all
+all: CMakeFiles/MacNARS_HyperCausal.dir/all
+all: CMakeFiles/MacNARS_AppleEmbeddings.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -74,6 +76,8 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/MacNARS_v2.dir/clean
 clean: CMakeFiles/MacNARS_Quantum.dir/clean
+clean: CMakeFiles/MacNARS_HyperCausal.dir/clean
+clean: CMakeFiles/MacNARS_AppleEmbeddings.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -83,7 +87,7 @@ clean: CMakeFiles/MacNARS_Quantum.dir/clean
 CMakeFiles/MacNARS_v2.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_v2.dir/build.make CMakeFiles/MacNARS_v2.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_v2.dir/build.make CMakeFiles/MacNARS_v2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=3,4 "Built target MacNARS_v2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=7,8 "Built target MacNARS_v2"
 .PHONY : CMakeFiles/MacNARS_v2.dir/all
 
 # Build rule for subdir invocation for target.
@@ -109,7 +113,7 @@ CMakeFiles/MacNARS_v2.dir/clean:
 CMakeFiles/MacNARS_Quantum.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_Quantum.dir/build.make CMakeFiles/MacNARS_Quantum.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_Quantum.dir/build.make CMakeFiles/MacNARS_Quantum.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=1,2 "Built target MacNARS_Quantum"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=5,6 "Built target MacNARS_Quantum"
 .PHONY : CMakeFiles/MacNARS_Quantum.dir/all
 
 # Build rule for subdir invocation for target.
@@ -127,6 +131,58 @@ MacNARS_Quantum: CMakeFiles/MacNARS_Quantum.dir/rule
 CMakeFiles/MacNARS_Quantum.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_Quantum.dir/build.make CMakeFiles/MacNARS_Quantum.dir/clean
 .PHONY : CMakeFiles/MacNARS_Quantum.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/MacNARS_HyperCausal.dir
+
+# All Build rule for target.
+CMakeFiles/MacNARS_HyperCausal.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_HyperCausal.dir/build.make CMakeFiles/MacNARS_HyperCausal.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_HyperCausal.dir/build.make CMakeFiles/MacNARS_HyperCausal.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=3,4 "Built target MacNARS_HyperCausal"
+.PHONY : CMakeFiles/MacNARS_HyperCausal.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/MacNARS_HyperCausal.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MacNARS_HyperCausal.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles 0
+.PHONY : CMakeFiles/MacNARS_HyperCausal.dir/rule
+
+# Convenience name for target.
+MacNARS_HyperCausal: CMakeFiles/MacNARS_HyperCausal.dir/rule
+.PHONY : MacNARS_HyperCausal
+
+# clean rule for target.
+CMakeFiles/MacNARS_HyperCausal.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_HyperCausal.dir/build.make CMakeFiles/MacNARS_HyperCausal.dir/clean
+.PHONY : CMakeFiles/MacNARS_HyperCausal.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/MacNARS_AppleEmbeddings.dir
+
+# All Build rule for target.
+CMakeFiles/MacNARS_AppleEmbeddings.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_AppleEmbeddings.dir/build.make CMakeFiles/MacNARS_AppleEmbeddings.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_AppleEmbeddings.dir/build.make CMakeFiles/MacNARS_AppleEmbeddings.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles --progress-num=1,2 "Built target MacNARS_AppleEmbeddings"
+.PHONY : CMakeFiles/MacNARS_AppleEmbeddings.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/MacNARS_AppleEmbeddings.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/MacNARS_AppleEmbeddings.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/maxeeem/autonars/MacNARS_v2/build/CMakeFiles 0
+.PHONY : CMakeFiles/MacNARS_AppleEmbeddings.dir/rule
+
+# Convenience name for target.
+MacNARS_AppleEmbeddings: CMakeFiles/MacNARS_AppleEmbeddings.dir/rule
+.PHONY : MacNARS_AppleEmbeddings
+
+# clean rule for target.
+CMakeFiles/MacNARS_AppleEmbeddings.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_AppleEmbeddings.dir/build.make CMakeFiles/MacNARS_AppleEmbeddings.dir/clean
+.PHONY : CMakeFiles/MacNARS_AppleEmbeddings.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

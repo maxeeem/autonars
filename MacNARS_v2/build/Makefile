@@ -142,6 +142,48 @@ MacNARS_Quantum/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_Quantum.dir/build.make CMakeFiles/MacNARS_Quantum.dir/build
 .PHONY : MacNARS_Quantum/fast
 
+#=============================================================================
+# Target rules for targets named MacNARS_HyperCausal
+
+# Build rule for target.
+MacNARS_HyperCausal: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MacNARS_HyperCausal
+.PHONY : MacNARS_HyperCausal
+
+# fast build rule for target.
+MacNARS_HyperCausal/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_HyperCausal.dir/build.make CMakeFiles/MacNARS_HyperCausal.dir/build
+.PHONY : MacNARS_HyperCausal/fast
+
+#=============================================================================
+# Target rules for targets named MacNARS_AppleEmbeddings
+
+# Build rule for target.
+MacNARS_AppleEmbeddings: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 MacNARS_AppleEmbeddings
+.PHONY : MacNARS_AppleEmbeddings
+
+# fast build rule for target.
+MacNARS_AppleEmbeddings/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_AppleEmbeddings.dir/build.make CMakeFiles/MacNARS_AppleEmbeddings.dir/build
+.PHONY : MacNARS_AppleEmbeddings/fast
+
+src/AppleEmbeddingsMain.o: src/AppleEmbeddingsMain.mm.o
+.PHONY : src/AppleEmbeddingsMain.o
+
+# target to build an object file
+src/AppleEmbeddingsMain.mm.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_AppleEmbeddings.dir/build.make CMakeFiles/MacNARS_AppleEmbeddings.dir/src/AppleEmbeddingsMain.mm.o
+.PHONY : src/AppleEmbeddingsMain.mm.o
+
+src/HyperCausalMain.o: src/HyperCausalMain.mm.o
+.PHONY : src/HyperCausalMain.o
+
+# target to build an object file
+src/HyperCausalMain.mm.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MacNARS_HyperCausal.dir/build.make CMakeFiles/MacNARS_HyperCausal.dir/src/HyperCausalMain.mm.o
+.PHONY : src/HyperCausalMain.mm.o
+
 src/QuantumMain.o: src/QuantumMain.mm.o
 .PHONY : src/QuantumMain.o
 
@@ -182,8 +224,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... MacNARS_AppleEmbeddings"
+	@echo "... MacNARS_HyperCausal"
 	@echo "... MacNARS_Quantum"
 	@echo "... MacNARS_v2"
+	@echo "... src/AppleEmbeddingsMain.o"
+	@echo "... src/HyperCausalMain.o"
 	@echo "... src/QuantumMain.o"
 	@echo "... src/main.o"
 	@echo "... src/main.i"

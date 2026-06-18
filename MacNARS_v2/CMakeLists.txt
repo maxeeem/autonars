@@ -9,6 +9,8 @@ enable_language(OBJCXX)
 find_library(METAL_FRAMEWORK Metal)
 find_library(FOUNDATION_FRAMEWORK Foundation)
 
+find_library(NATURALLANGUAGE_FRAMEWORK NaturalLanguage)
+
 include_directories(include)
 
 # Standard logic core
@@ -17,3 +19,13 @@ add_executable(MacNARS_v2 src/main.cpp)
 # Quantum-inspired core
 add_executable(MacNARS_Quantum src/QuantumMain.mm)
 target_link_libraries(MacNARS_Quantum ${METAL_FRAMEWORK} ${FOUNDATION_FRAMEWORK})
+
+# Hyper-Causal Drone Simulation core
+add_executable(MacNARS_HyperCausal src/HyperCausalMain.mm)
+target_link_libraries(MacNARS_HyperCausal ${METAL_FRAMEWORK} ${FOUNDATION_FRAMEWORK})
+
+# Apple Intelligence Embeddings Bridge
+add_executable(MacNARS_AppleEmbeddings src/AppleEmbeddingsMain.mm)
+target_link_libraries(MacNARS_AppleEmbeddings ${FOUNDATION_FRAMEWORK} ${NATURALLANGUAGE_FRAMEWORK})
+
+
