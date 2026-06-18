@@ -1,0 +1,39 @@
+# macOS
+.DS_Store
+
+# Build directories
+build/
+build_quantum/
+MacNARS_v2/build/
+MacNARS_v2/build_quantum/
+MacNARS/build/
+
+# Python Virtual Environments
+gym_venv/
+venv/
+env/
+MacNARS_v2/gym_venv/
+NARS_Apple/OpenNARS-4/venv/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Compiled binaries
+*.so
+*.dylib
+*.dll
+*.o
+*.a
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# IDEs
+.vscode/
+.idea/

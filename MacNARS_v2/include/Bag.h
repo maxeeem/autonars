@@ -100,6 +100,11 @@ public:
         }
         return nullptr;
     }
+
+    // Expose name_table for Semantic Gravity searches
+    const std::unordered_map<K, std::shared_ptr<T>>& get_items() const {
+        return name_table;
+    }
 };
 
 #endif
