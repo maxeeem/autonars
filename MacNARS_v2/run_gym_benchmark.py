@@ -41,8 +41,9 @@ def test_macnars(gravity_multiplier=1.0, episodes=5):
     for ep in range(episodes):
         obs, info = env.reset(seed=42 + ep)
         total_reward = 0
+        reward = 0.0 # Initial reward
         for _ in range(500):
-            action = agent.step(obs)
+            action = agent.step(obs, float(reward))
             obs, reward, terminated, truncated, info = env.step(action)
             total_reward += reward
             if terminated or truncated:

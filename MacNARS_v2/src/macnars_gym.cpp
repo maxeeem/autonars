@@ -6,6 +6,7 @@
 #include <map>
 #include <random>
 #include <string>
+#include "PerceptionCortex.h"
 
 namespace py = pybind11;
 
@@ -23,11 +24,10 @@ struct Truth {
 };
 
 // NAL-8 Procedural Cortex
-// Learns implications: < (Precondition &/ Operation) =/> Postcondition >
 class ProceduralCortex {
 public:
-    // Implication Key: "Precond_Op_Postcond"
     std::map<std::string, Truth> hypotheses;
+    std::map<int, Truth> state_values; // Maps state_id to its observed reward value
     
     int last_state;
     int last_op;
@@ -38,175 +38,169 @@ public:
 
     ProceduralCortex() : last_state(-1), last_op(-1), has_history(false), rng(42), dist(0.0f, 1.0f) {}
 
-    // Discretize state for symbolic reasoning
-    int perceive(float angle, float pos) {
-        float abs_angle = std::abs(angle);
-        if (abs_angle < 0.02f) return 0; // Stable
-        if (abs_angle < 0.08f) return 1; // Warning
-        return 2; // Critical
-    }
-
     std::string make_key(int pre, int op, int post) {
         return std::to_string(pre) + "_" + std::to_string(op) + "_" + std::to_string(post);
     }
 
-    // NAL-8 Temporal Induction
-    void learn(int current_state) {
+    // NAL-9 Mental Operations
+    void mental_op_doubt(const std::string& key) {
+        if (hypotheses.find(key) != hypotheses.end()) {
+            // Rapidly slash confidence (Introspective pruning)
+            hypotheses[key].confidence *= 0.1f; 
+        }
+    }
+
+    void mental_op_believe(const std::string& key) {
+        if (hypotheses.find(key) != hypotheses.end()) {
+            // Boost confidence if prediction was correct
+            hypotheses[key].confidence = std::min(0.99f, hypotheses[key].confidence * 1.1f);
+        }
+    }
+
+    void learn(int current_state, float reward) {
+        if (state_values.find(current_state) == state_values.end()) {
+            state_values[current_state] = Truth(0.5f, 0.01f);
+        }
+        update_state_value(current_state, reward > 0.0f ? 1.0f : 0.0f);
+
         if (!has_history) return;
 
-        // We executed last_op in last_state, and arrived at current_state.
-        // Update Truth of: < (last_state &/ last_op) =/> current_state >
-        
-        // Positive evidence for the actual transition
-        std::string actual_key = make_key(last_state, last_op, current_state);
-        update_truth(actual_key, 1.0f); // Frequency 1.0 (It happened)
+        // 1. Prediction Verification (Introspection)
+        // Check if we arrived at the state we expected
+        std::string expected_key = "";
+        float max_exp = -1.0f;
+        for (int post_id : observed_states) {
+            std::string k = make_key(last_state, last_op, post_id);
+            if (hypotheses.find(k) != hypotheses.end()) {
+                if (hypotheses[k].expectation() > max_exp) {
+                    max_exp = hypotheses[k].expectation();
+                    expected_key = k;
+                }
+            }
+        }
 
-        // Negative evidence for other possible post-conditions
-        for (int other_post = 0; other_post <= 2; ++other_post) {
+        std::string actual_key = make_key(last_state, last_op, current_state);
+        
+        if (!expected_key.empty() && expected_key != actual_key && max_exp > 0.6f) {
+            // NAL-9 Introspection: "I was wrong. I expected a different outcome."
+            mental_op_doubt(expected_key);
+        } else if (expected_key == actual_key) {
+            // NAL-9 Introspection: "My causal model is working."
+            mental_op_believe(actual_key);
+        }
+
+        // 2. Standard Temporal Induction (Evidence collection)
+        update_truth(actual_key, 1.0f);
+
+        for (int other_post : observed_states) {
             if (other_post != current_state) {
                 std::string alt_key = make_key(last_state, last_op, other_post);
-                update_truth(alt_key, 0.0f); // Frequency 0.0 (It didn't happen)
+                update_truth(alt_key, 0.0f);
             }
         }
     }
 
     void update_truth(const std::string& key, float f_ev) {
-        if (hypotheses.find(key) == hypotheses.end()) {
-            hypotheses[key] = Truth(0.5f, 0.01f);
-        }
-        
         Truth& t = hypotheses[key];
-        
-        // NARS Revision (simplified Evidence addition)
-        // w = c / (1 - c). Evidential weight.
         float w = t.confidence / (1.0f - t.confidence);
-        w += 1.0f; // Add 1 unit of evidence
-        
-        // New frequency is weighted average
+        w += 1.0f;
         t.frequency = ((t.frequency * (w - 1.0f)) + f_ev) / w;
-        
-        // New confidence is w / (w + 1)
         t.confidence = w / (w + 1.0f);
-        
-        // Decay to prevent total rigidity
         t.confidence *= 0.99f;
     }
 
-    // NAL-8 Decision Making
-    int decide(int current_state, int goal_state) {
-        int best_op = 0; // 0 = Do nothing
-        float best_exp = 0.5f;
+    void update_state_value(int id, float f_ev) {
+        Truth& t = state_values[id];
+        float w = t.confidence / (1.0f - t.confidence);
+        w += 1.0f;
+        t.frequency = ((t.frequency * (w - 1.0f)) + f_ev) / w;
+        t.confidence = w / (w + 1.0f);
+    }
 
-        // Search hypotheses: < (current_state &/ ?op) =/> goal_state >
-        // We have 5 operations: 0(Wait), 1(IncP), 2(DecP), 3(IncD), 4(DecD)
+    std::vector<int> observed_states;
+
+    int decide(int current_state) {
+        int best_op = 0; 
+        float best_utility = -1.0f;
+
+        // Search: <(current_state &/ ?op) =/> ?post> where ?post has high state_value
         for (int op = 0; op <= 4; ++op) {
-            std::string key = make_key(current_state, op, goal_state);
-            if (hypotheses.find(key) != hypotheses.end()) {
-                float exp = hypotheses[key].expectation();
-                if (exp > best_exp) {
-                    best_exp = exp;
-                    best_op = op;
+            for (auto const& [post_id, val_truth] : state_values) {
+                std::string key = make_key(current_state, op, post_id);
+                if (hypotheses.find(key) != hypotheses.end()) {
+                    // Utility = P(Post | Pre, Op) * Value(Post)
+                    float utility = hypotheses[key].expectation() * val_truth.expectation();
+                    if (utility > best_utility) {
+                        best_utility = utility;
+                        best_op = op;
+                    }
                 }
             }
         }
 
-        // Motor Babbling (Exploration)
-        // If we have no strong hypothesis, or purely randomly 10% of the time, explore.
-        if (best_exp <= 0.55f || dist(rng) < 0.1f) {
+        if (best_utility < 0.55f || dist(rng) < 0.15f) {
             best_op = (int)(dist(rng) * 5.0f);
         }
 
         last_state = current_state;
         last_op = best_op;
         has_history = true;
-
         return best_op;
     }
 };
 
 class DualProcessAgent {
 public:
-    float target_pos;
-    float target_angle;
-    
     float Kp_angle;
     float Kd_angle;
-    float Ki_angle;
-    
-    float int_angle;
-    float last_angle;
     
     int cortex_cycles;
     int tick_counter;
 
     ProceduralCortex cortex;
+    PerceptionCortex perception;
 
-    DualProcessAgent() {
-        target_pos = 0.0f;
-        target_angle = 0.0f;
-        
-        // Start with terrible, uncalibrated parameters. The Cortex MUST learn to fix this.
-        Kp_angle = 1.0f; 
-        Kd_angle = 0.0f;
-        Ki_angle = 0.0f;
-        
-        int_angle = 0.0f;
-        last_angle = 0.0f;
-        
+    DualProcessAgent() : perception(0.15f) {
+        Kp_angle = 10.0f; 
+        Kd_angle = 2.0f;
         cortex_cycles = 0;
         tick_counter = 0;
     }
 
-    // Input state from CartPole: [pos, vel, angle, ang_vel]
-    int step(py::array_t<float> obs) {
+    int step(py::array_t<float> obs, float reward) {
         auto buf = obs.unchecked<1>();
-        float pos = buf(0);
-        float vel = buf(1);
-        float angle = buf(2);
-        float ang_vel = buf(3);
-
-        target_angle = (pos * 0.05f) + (vel * 0.05f);
-
-        // 1. NARS Cortex (Symbolic Procedural Learning) - Runs at 10Hz (every 100 ticks assuming Gym runs at some fast dt, wait CartPole is 50Hz. Let's run cortex every 5 ticks).
-        tick_counter++;
-        if (tick_counter % 5 == 0) {
-            int current_state = cortex.perceive(angle, pos);
-            
-            // Learn from the last action's consequence
-            cortex.learn(current_state);
-
-            // If we are not in the Goal State (Stable = 0), we must decide on an operation.
-            if (current_state != 0) {
-                int op = cortex.decide(current_state, 0); // 0 is Goal (Stable)
-                
-                // Execute Operation
-                if (op == 1) Kp_angle += 5.0f;
-                else if (op == 2) Kp_angle = std::max(0.0f, Kp_angle - 5.0f);
-                else if (op == 3) Kd_angle += 1.0f;
-                else if (op == 4) Kd_angle = std::max(0.0f, Kd_angle - 1.0f);
-                
-                if (op != 0) cortex_cycles++;
-            } else {
-                // If stable, we still record history so we learn what keeps us stable
-                cortex.last_state = current_state;
-                cortex.last_op = 0; // Wait
-                cortex.has_history = true;
-            }
+        std::vector<float> obs_vec = {buf(0), buf(1), buf(2), buf(3)};
+        
+        int current_state = perception.discretize(obs_vec);
+        if (std::find(cortex.observed_states.begin(), cortex.observed_states.end(), current_state) == cortex.observed_states.end()) {
+            cortex.observed_states.push_back(current_state);
         }
 
-        // 2. Continuous Reflex (Spinal PID)
-        float err_angle = target_angle - angle;
+        tick_counter++;
+        if (tick_counter % 5 == 0) {
+            cortex.learn(current_state, reward);
+            int op = cortex.decide(current_state);
+            
+            if (op == 1) Kp_angle += 2.0f;
+            else if (op == 2) Kp_angle = std::max(0.0f, Kp_angle - 2.0f);
+            else if (op == 3) Kd_angle += 0.5f;
+            else if (op == 4) Kd_angle = std::max(0.0f, Kd_angle - 0.5f);
+            
+            if (op != 0) cortex_cycles++;
+        }
+
+        float angle = obs_vec[2];
+        float ang_vel = obs_vec[3];
+        float pos = obs_vec[0];
+        float vel = obs_vec[1];
+
+        float target_angle = (pos * 0.05f) + (vel * 0.05f);
+        float force = (Kp_angle * (target_angle - angle)) - (Kd_angle * ang_vel);
         
-        // We calculate continuous force needed to correct angle
-        float force = (Kp_angle * err_angle) - (Kd_angle * ang_vel);
-        
-        // Bang-bang mapping for Gym CartPole
         return force < 0.0f ? 1 : 0;
     }
 
-    int get_cortex_cycles() {
-        return cortex_cycles;
-    }
+    int get_cortex_cycles() { return cortex_cycles; }
 };
 
 PYBIND11_MODULE(macnars, m) {
