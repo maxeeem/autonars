@@ -47,6 +47,7 @@ public:
         if (hypotheses.find(key) != hypotheses.end()) {
             // Rapidly slash confidence (Introspective pruning)
             hypotheses[key].confidence *= 0.1f; 
+            // std::cout << "[NAL-9] Introspection triggered: Doubting hypothesis " << key << " due to causal failure.\n";
         }
     }
 
