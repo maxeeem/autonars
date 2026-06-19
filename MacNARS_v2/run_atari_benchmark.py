@@ -2,7 +2,7 @@ import gymnasium as gym
 import ale_py
 import numpy as np
 import cv2
-import macnars_atari
+import macnars_v4
 import time
 
 # A Neuro-Symbolic bridge for Atari Breakout.
@@ -42,15 +42,17 @@ class AtariNeuroSymbolicBridge:
         # 5. Return continuous vector for NARS: [p_x, b_x, b_y, b_vel_x, b_vel_y, dist]
         return np.array([paddle_x, ball_x, ball_y, ball_vel_x, ball_vel_y, ball_x - paddle_x], dtype=np.float32)
 
-def run_atari_benchmark(episodes=2):
+def run_atari_benchmark(episodes=50):
     env = gym.make("ALE/Breakout-v5", render_mode=None)
     bridge = AtariNeuroSymbolicBridge()
-    agent = macnars_atari.AtariAgent() # Persistent agent across episodes
+    agent = macnars_v4.V4AtariAgent() # Unified NAL-8 Architecture
 
     print("====================================================")
     print(" MacNARS v3: Atari Breakout Neuro-Symbolic Benchmark")
     print("====================================================")
     print("Strategy: Persistent NAL-9 Cortex + Causal Event Extraction")
+    
+    scores = []
     
     for ep in range(episodes):
         obs, info = env.reset(seed=1337 + ep)
@@ -71,7 +73,9 @@ def run_atari_benchmark(episodes=2):
             obs, reward, terminated, truncated, info = env.step(atari_action)
             total_reward += reward
             
-        print(f"  Episode {ep + 1}: Score: {total_reward}. Cortex Inferences: {agent.get_cortex_cycles()}")
+        scores.append(total_reward)
+        avg_score = np.mean(scores[-10:])
+        print(f"  Episode {ep + 1}: Score: {total_reward}. Avg (last 10): {avg_score:.2f}. Cortex Inferences: {agent.get_cortex_cycles()}")
 
 if __name__ == "__main__":
     run_atari_benchmark()
