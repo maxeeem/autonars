@@ -34,7 +34,8 @@ int main() {
     std::cout << "[Attention] Searching 1,000,000 concepts via Apple Neural Engine / Metal GPU...\n";
     
     auto start = std::chrono::high_resolution_clock::now();
-    int best_id = engine.find_closest_concept(massive_memory_bank, query);
+    float out_sim = 0.0f;
+    int best_id = engine.find_closest_concept(massive_memory_bank, query, out_sim);
     auto end = std::chrono::high_resolution_clock::now();
     
     std::chrono::duration<double, std::milli> duration = end - start;

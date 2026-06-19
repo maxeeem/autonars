@@ -41,8 +41,11 @@ public:
     }
 
     // Searches the entire Bag for the closest semantic match in O(1) perceived time using GPU threads
-    int find_closest_concept(const std::vector<MetalConceptEmbedding>& memory_bank, const MetalConceptEmbedding& query) {
-        if (memory_bank.empty() || pipelineState == nil) return -1;
+    int find_closest_concept(const std::vector<MetalConceptEmbedding>& memory_bank, const MetalConceptEmbedding& query, float& out_similarity) {
+        if (memory_bank.empty() || pipelineState == nil) {
+            out_similarity = -1.0f;
+            return -1;
+        }
 
         NSUInteger num_concepts = memory_bank.size();
         
@@ -90,6 +93,7 @@ public:
             }
         }
         
+        out_similarity = max_sim;
         return best_id;
     }
 };
