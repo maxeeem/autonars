@@ -63,7 +63,7 @@ private:
     int create_new_state(const std::vector<float>& obs) {
         int id = next_id++;
         latent_pool.push_back({id, obs, 1});
-        std::cout << "[Perception] Created New Latent State: " << id << std::endl;
+        // std::cout << "[Perception] Created New Latent State: " << id << std::endl;
         return id;
     }
 

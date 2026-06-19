@@ -27,4 +27,8 @@ This document outlines the concrete implementation plan to evolve MacNARS v2 int
 3. `^doubt` will instantly slash the confidence of the hypothesis, preventing the agent from repeating the same mistake and enforcing rapid un-learning of false causality.
 
 ---
-**Execution:** I will implement these sequentially, starting with the `PerceptionCortex` for Unsupervised Concept Generation.
+**Execution:** 
+- [x] Implemented `PerceptionCortex` for Unsupervised Concept Generation.
+- [x] Initial Atari bridge (`macnars_atari`) and benchmark (`run_atari_benchmark.py`) for Frontier B implemented and successfully compiling.
+- [ ] Refine cortex learning logic and scale to full Atari training loop.
+- [ ] Implement NAL-9 Introspection (`^doubt`, `^believe`) for Frontier C.
