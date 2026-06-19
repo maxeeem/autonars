@@ -38,4 +38,7 @@ constexpr Atom SET_EXT_CLOSE = 15;           // }
 constexpr Atom SET_INT_OPEN = 16;            // [
 constexpr Atom SET_INT_CLOSE = 17;           // ]
 
+constexpr Atom COPULA_PREDICTIVE_IMPLICATION = 18; // =/>
+constexpr Atom OPERATOR_SEQ_CONJUNCTION = 19;      // &/
+
 #endif
