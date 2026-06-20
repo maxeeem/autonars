@@ -38,7 +38,7 @@ A toy Metal compute shader exploring how truth values might be evaluated in para
 .
 ├── MacNARS_v2/
 │   ├── CMakeLists.txt           # Build configuration
-│   ├── run_gym_benchmark.py     # Python script pitting MacNARS vs PPO
+│   ├── run_gym_benchmark.py     # Python script for toy CartPole experiments
 │   ├── include/
 │   │   ├── Bag.h                # Core probabilistic selection data structure
 │   │   ├── ConceptV3.h          # ECS Concept with Semantic Manifold anchors
@@ -47,13 +47,13 @@ A toy Metal compute shader exploring how truth values might be evaluated in para
 │   └── src/
 │       ├── macnars_gym.cpp      # pybind11 wrapper exposing NARS to Python
 │       ├── HyperCausalMain.mm   # 1D Drone Reflex vs Cortex simulation
-│       ├── SemanticGravityMain.cpp # Apple Intelligence Embedding simulation
-│       ├── Superposition.metal  # Quantum-inspired parallel logic shader
-│       └── main.cpp             # Faithful NAL syllogistic rule tests
-├── GYM_INTEGRATION_PLAN.md      # Blueprint for Gym benchmark architecture
-├── PLAN_v2.md                   # Core architectural philosophy
-├── RESEARCH_REPORT.md           # Deep dive into the radical research tracks
-└── RESULTS.md                   # Detailed logs of experimental benchmarks
+│       ├── SemanticGravityMain.cpp # Apple NaturalLanguage Embedding simulation
+│       ├── main.cpp             # Faithful NAL syllogistic rule tests
+│       └── speculative/         # Toy implementations of experimental ideas (Quantum, Swarms)
+├── docs/
+│   ├── planning/                # Architectural diagrams and plans
+│   └── speculative/             # Quarantined sci-fi roadmaps and future brainstorms
+└── RESULTS.md                   # Logs of preliminary experimental benchmarks
 ```
 
 ---
