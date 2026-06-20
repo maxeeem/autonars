@@ -2,10 +2,14 @@
 #include "Memory.h"
 #include "Term.h"
 #include "Truth.h"
+#include "Introspection.h"
 
 int main() {
     std::cout << "MacNARS: Apple Silicon Optimized NARS" << std::endl;
     std::cout << "-------------------------------------" << std::endl;
+
+    // Run NAL-9 Introspection Proof of Concept
+    Introspection::run_introspection("/Users/maxeeem/autonars/MacNARS/src");
 
     Memory memory;
 

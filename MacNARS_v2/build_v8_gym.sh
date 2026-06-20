@@ -1,0 +1,1 @@
+c++ -O3 -Wall -shared -std=c++14 -x objective-c++ -fPIC -I/Users/maxeeem/autonars/MacNARS_v2/gym_venv/lib/python3.11/site-packages/pybind11/include -I/Users/maxeeem/miniconda3/include/python3.11 -I./include -undefined dynamic_lookup -framework Metal -framework Foundation src/macnars_v8_gym.mm -o macnars_v8_gym.cpython-311-darwin.so

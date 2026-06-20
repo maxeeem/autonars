@@ -1,4 +1,7 @@
-# MacNARS v8: The Ultimate Neuromorphic Logic Engine
+> [!WARNING]
+> **Exploratory Prototype Disclaimer:** The claims in this document regarding "SOTA", "AGI", and "Sample Efficiency" are conceptual design goals and hype. The actual implemented prototypes use hand-coded controllers, mock vectors, and untuned baselines. This document serves as an architectural brainstorm rather than a mathematically rigorous paper.
+
+# MacNARS v8: Experimental Architecture
 
 ## The Journey to v8
 As a Research Lead obsessed with pushing the state of the art, we have bypassed standard iterative improvements to deliver a series of massive architectural leaps:

@@ -1,38 +1,34 @@
-# MacNARS: Apple Silicon Optimized Non-Axiomatic Reasoning System
+# MacNARS: Apple Silicon Optimized Neuro-Symbolic Prototype
 
-MacNARS is a dual-process Artificial General Intelligence (AGI) architecture built natively for macOS and Apple Silicon. It bridges the gap between mathematically rigorous symbolic reasoning (Pei Wang's Non-Axiomatic Logic) and modern, high-performance hardware acceleration (Metal, Grand Central Dispatch, Apple Neural Engine).
+MacNARS is an experimental NARS-inspired control prototype built natively for macOS and Apple Silicon. It explores bridging symbolic logic (Non-Axiomatic Logic concepts) with continuous control loops and simple hardware acceleration (Metal, Apple NaturalLanguage embeddings).
 
-By combining continuous GPU-driven sensorimotor reflexes with discrete CPU-driven symbolic learning, MacNARS achieves state-of-the-art sample efficiency and zero-shot robustness in continuous control tasks compared to traditional Deep Reinforcement Learning (like PPO or DQN).
+In preliminary toy benchmarks, a hand-designed feedback controller with symbolic gain adaptation solves CartPole quickly and remains stable under simple physics perturbations. These results are not yet comparable to tuned RL baselines and should be treated as exploratory.
 
 ---
 
-## 🚀 Key Results
+## 🚀 Key Explorations
 
-In standardized Gymnasium (`CartPole-v1`) continuous control benchmarks against a Stable-Baselines3 PPO neural network:
-
-1. **39x Greater Sample Efficiency:** PPO required 20,000 steps to learn a weight matrix to balance the pole. MacNARS, using **Autonomous NAL-8 Procedural Learning**, generated explicit causal rules (e.g., `If Critical, Increase Kp`) from scratch and perfectly solved the environment in **just 2 episodes (~513 steps)** of motor babbling.
-2. **Zero-Shot Robustness to Chaos:** When the environment physics were radically perturbed (Gravity multiplied by 2.5x), the trained PPO model suffered immediate performance degradation. MacNARS dynamically recognized the "Surprise", adjusted its symbolic strategy, and survived perfectly (`500/500`) zero-shot.
-3. **Curing Synonymous Brittleness:** By integrating Apple Intelligence foundation models natively, MacNARS successfully retrieves symbolically unlinked concepts (e.g., querying "underwater vessel" retrieves "submarine") using zero-overhead **Semantic Gravity**.
+1. **Preliminary CartPole Demo:** In a test against one untuned Stable-Baselines3 PPO run (20k steps), a hand-designed PID-like controller with NARS-inspired gain adaptation reached the CartPole limit in a few episodes. While this demonstrates symbolic adjustment of a reflex controller, stronger baselines, tabular comparisons, and multi-seed evaluations are required before any formal efficiency claims can be made.
+2. **Feedback Stability:** When the environment physics were perturbed (Gravity multiplied by 2.5x), the hand-coded feedback controller predictably adjusted to the error. This explores a dual-process fast/slow control loop.
+3. **Semantic Fallback:** By integrating Apple NaturalLanguage sentence embeddings natively, the prototype can use a cosine similarity fallback to retrieve semantically related concepts when exact symbolic matches fail.
 
 ---
 
 ## 🧠 Architectural Components
 
-MacNARS v2 deviates from pragmatic but unfaithful implementations (like ONA) by strictly adhering to the **Bag-based Control Model** and **NAL Second Edition**, augmented by three radical research tracks:
+This prototype explores translating NARS-inspired concepts into a continuous execution model:
 
-### 1. Dual-Process Hyper-Causal Control
-Traditional NARS attempts to process continuous physics as discrete logical pulses, causing crashes in robotics. MacNARS splits the "Nervous System":
-* **The Reflex (GPU/Spinal Cord):** A 1000Hz continuous PID-like loop running in Metal shaders.
-* **The Cortex (CPU/NARS):** A 10Hz discrete symbolic loop. It monitors the GPU for a "Surprise/Causal Anomaly" metric. If the reflex fails, the Cortex interrupts its background reasoning to dynamically tune the reflex parameters.
+### 1. Dual-Process Control (Experimental)
+The architecture splits processing into a fast reflex loop (a hand-coded continuous PID-like loop running in Metal shaders) and a slower discrete symbolic monitor.
 
-### 2. Autonomous Procedural Learning (NAL-8)
-MacNARS does not use hardcoded heuristics. It boots with zero knowledge. Through Temporal Induction, it observes the environment, executes operations, and builds a hypothesis table of Truth values (`Frequency` and `Confidence`) mapping `Precondition + Operation -> Postcondition`. 
+### 2. Procedural Adaptation (Toy Implementations)
+The system uses simple temporal induction clustering to adjust the parameters of the hand-coded controller online.
 
-### 3. Associative Manifold Memory (Semantic Gravity)
-Instead of a heavy external MLX instance, MacNARS uses a C++/Objective-C++ bridge to macOS's native `NaturalLanguage` framework. It extracts 512-dimensional sentence embeddings directly from the **Apple Neural Engine (ANE)**. When exact symbolic matches fail, NARS uses `Accelerate` to compute cosine similarity across the Concept Bag, enabling fluid semantic retrieval.
+### 3. Associative Manifold Memory
+MacNARS uses a C++/Objective-C++ bridge to macOS's native `NaturalLanguage` framework to extract sentence embeddings for simple semantic retrieval.
 
-### 4. Quantum-Inspired Superposition (Experimental)
-A Metal compute shader capable of processing parallel inference wavefunctions. Instead of picking one concept per cycle, it processes hundreds of logic paths simultaneously, using constructive/destructive wave phase interference to prune contradictory hypotheses at the hardware level.
+### 4. Parallel Inference Kernels
+A toy Metal compute shader exploring how truth values might be evaluated in parallel across an array.
 
 ---
 

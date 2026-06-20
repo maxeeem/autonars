@@ -1,3 +1,6 @@
+> [!WARNING]
+> **Exploratory Prototype Disclaimer:** This log documents a highly exploratory coding marathon. The prototypes created (Gödel Machine, NAL-6 Flat Buffers, MiniGrid solvers, Cross-Modal mapping) rely on heavy abstractions, mock data, toy constraints, and hand-coded heuristics rather than robust mathematical proofs or formal NARS implementations.
+
 # MacNARS 12-Hour Research Marathon Log
 **Start Time:** 2026-06-19 12:41 PM PDT
 **Target End Time:** 2026-06-20 12:00 AM PDT (Midnight)

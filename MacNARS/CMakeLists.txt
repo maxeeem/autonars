@@ -20,6 +20,7 @@ set(SOURCES
     src/main.mm
     src/NarseseParser.cpp
     src/Memory.cpp
+    src/Introspection.cpp
 )
 
 # Executable

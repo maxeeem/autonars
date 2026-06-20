@@ -1,3 +1,6 @@
+> [!WARNING]
+> **Sci-Fi Concept Disclaimer:** The ideas presented in this document regarding "Matrioshka Brains", "Quantum-Symbolic Superposition", and "500-year horizons" are purely speculative science fiction conceptualizations. The actual repository contains early, toy-level simulations mapping simple numbers across a 3D grid, and does not represent real physical or cosmological achievements.
+
 # MacNARS: The Millennium Roadmap (100 to 500 Years)
 
 As we stand upon the summit of MacNARS v10 (The Global Workspace Swarm), we have saturated the logical limits of classical von Neumann and GPU architectures. To push forward 100, and even 500 years, we must transcend software and bridge NAL into fundamental physics.

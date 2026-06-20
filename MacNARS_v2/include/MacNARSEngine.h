@@ -76,7 +76,7 @@ public:
         
         // Epsilon greedy exploration fallback could go here
         if (best_op == -1) {
-            best_op = rand() % 4; // Assuming 4 discrete actions
+            best_op = rand() % 6; // Assuming 6 discrete actions for MiniGrid
         }
         
         last_concept_id = current_concept_id;

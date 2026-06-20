@@ -1,4 +1,7 @@
-# MacNARS v10: The Global Workspace Cortical Swarm
+> [!WARNING]
+> **Exploratory Prototype Disclaimer:** The claims in this document regarding "Neuromorphic Brains", "Swarms", and "Asynchronous Supercomputing" are highly speculative conceptual extrapolations. The actual codebase contains early toy prototypes and mock implementations exploring these ideas.
+
+# MacNARS v10: Speculative Architecture
 
 ## The Final Frontier: Overcoming the Monolithic Bottleneck
 By MacNARS v8, we achieved unparalleled single-agent reasoning speeds by mapping the entirety of Non-Axiomatic Logic (Semantic Gravity and Backward Chaining) to Apple Metal compute shaders. 
